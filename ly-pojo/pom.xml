@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>leyou</artifactId>
+        <groupId>com.leyou</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ly-pojo</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>ly-item-pojo</module>
+    </modules>
+
+    <!--
+        凡是非微服务的工具包模块，在导入数据库，索引库，redis，mq等相关需要链接其他软件的jar包的时候，
+        该jar包一定不能带starter。
+        因为凡是这些jar包，都必须有配套的配置文件，比如指定要链接的软件的ip和端口，如果没有配置文件，
+        启动就会报错。
+        凡是带有starter的jar包，都是springboot中可以加载对象到IOC容器的包。
+        spring-boot-starter-xxx
+        任何配置文件，都是在项目启动之前，要编译进代码的
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-core</artifactId>
+            <version>${mapper.version}</version>
+        </dependency>
+    </dependencies>
+</project>
